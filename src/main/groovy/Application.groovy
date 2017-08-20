@@ -3,16 +3,18 @@ import groovy.json.JsonBuilder
 class Application {
     static void main(String[] args) {
 
-        def filePath =  System.getProperty('file')
-        def outPath =  System.getProperty('out')
+        def filePath = System.getProperty('file')
+        def arrayOutPath = filePath.replace(new File(filePath).name, "out_array.json")
+        def objectOutPath = filePath.replace(new File(filePath).name, "out_object.json")
 
-        if(filePath == null){
+        if (filePath == null) {
             println("file is null")
             return
         }
 
 //        println(filePath)
         def all = [:]
+        def list = []
         def i = 1
         new ExcelBuilder(filePath).eachLine([labels: true]) { row ->
 
@@ -24,13 +26,12 @@ class Application {
 
             all[i] = map
 
+            list << map
+
             i++
         }
 
-        def str =  new JsonBuilder(all).toPrettyString()
-        def file =  new File(outPath)
-        file.setText(str,'utf-8')
-//        file << str
-
+        new File(objectOutPath).setText(new JsonBuilder(all).toPrettyString(), 'utf-8')
+        new File(arrayOutPath).setText(new JsonBuilder(list).toPrettyString(), 'utf-8')
     }
 }
