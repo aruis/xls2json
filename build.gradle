@@ -8,7 +8,7 @@ plugins {
 group 'com.aruistar.tool'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'Application'
+mainClassName = 'com.aruistar.tool.XLS2Json'
 
 repositories {
     mavenCentral()
