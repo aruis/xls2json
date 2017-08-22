@@ -6,12 +6,16 @@ plugins {
 }
 
 group 'com.aruistar.tool'
-version '1.1-xls-only'
+version '1.1-xls'
 
 mainClassName = 'com.aruistar.tool.XLS2Json'
 
 repositories {
     mavenCentral()
+}
+
+shadowJar {
+    classifier = 'fat'
 }
 
 dependencies {
