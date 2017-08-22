@@ -2,8 +2,8 @@ package com.aruistar.tool
 
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFDateUtil
-import org.apache.poi.hssf.usermodel.HSSFRow
-import org.apache.poi.hssf.usermodel.HSSFWorkbook
+import org.apache.poi.ss.usermodel.Row
+import org.apache.poi.ss.usermodel.WorkbookFactory
 
 /**
  * Groovy Builder that extracts data from
@@ -21,7 +21,7 @@ class ExcelBuilder {
     }
 
     ExcelBuilder(File file) {
-        HSSFRow.metaClass.getAt = { int idx ->
+        Row.metaClass.getAt = { int idx ->
             def cell = delegate.getCell(idx)
             if (!cell) {
                 return null
@@ -51,7 +51,7 @@ class ExcelBuilder {
         }
 
         file.withInputStream { is ->
-            workbook = new HSSFWorkbook(is)
+            workbook = WorkbookFactory.create(is)
         }
     }
 

@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.aruistar.tool'
-version '1.0-SNAPSHOT'
+version '1.1'
 
 mainClassName = 'com.aruistar.tool.XLS2Json'
 
@@ -17,5 +17,13 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy:2.4.7'
     compile 'org.codehaus.groovy:groovy-json:2.4.7'
-    compile group: 'org.apache.poi', name: 'poi', version: '3.15'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.16'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.16'
+    compile group: 'org.apache.poi', name: 'poi-ooxml-schemas', version: '3.16'
+
+
+//    compile group: 'org.apache.poi', name: 'ooxml-schemas', version: '1.3'
+
+
+
 }
